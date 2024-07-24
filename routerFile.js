@@ -11,6 +11,7 @@ const exampleMiddleware = (req, res, next) => {
 // router.post('/api/signup', exampleMiddleware, userController.signup);
 router.get('/api/userTable/:id', exampleMiddleware, (req,res)=>{
     console.log(req);
+    res.json({"hello":"pravin"})
 });
 // router.patch('/api/userTable/:id', exampleMiddleware, userController.patchUser)
 // router.put('/api/userTable/:id', exampleMiddleware, userController.updateUser);
