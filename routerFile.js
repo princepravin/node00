@@ -24,7 +24,7 @@ router.get("/api/getEmployees",exampleMiddleware,(req,res)=> {
          console.log(typeof(result))
 
         //  res.json(res)
-        res.json({result:result})
+        res.json({"result":result})
      })
     
 })
