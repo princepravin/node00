@@ -7,7 +7,7 @@ const exampleMiddleware = (req, res, next) => {
 router.get('/api/userTable/:id', exampleMiddleware, (req,res)=>{
     
     console.log(req);
-    res.json({"hello":req.params.id})
+    res.json({"hello":req.params.id, "array":[1,2,3,4,5]})
 });
 
 router.get("/api/getEmployees",exampleMiddleware,(req,res)=> {
@@ -15,10 +15,15 @@ router.get("/api/getEmployees",exampleMiddleware,(req,res)=> {
 
     mysql2.query("Select * from employees",(err,result)=>{
         if(err) console.log(err)
-        if (result.length === 0) {
-            console.log("No data found in employees table.");
-            return res.json({ employees: [] });
-        }
+        // result.values
+        console.log(result)
+        console.log(result.affectedRows);
+        console.log(result.entries)
+        console.log(result.values)
+        // if (result.values.length === 0) {
+        //     console.log("No data found in employees table.");
+        //     return res.json({ employees: [] });
+        // }
 
         res.json({ employees: result });
      })
