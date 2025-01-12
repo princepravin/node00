@@ -20,8 +20,11 @@ router.get("/api/getEmployees",exampleMiddleware,(req,res)=> {
 
     mysql2.query("Select * from employees",(err,res)=>{
         if(err) console.log(err)
-         console.log(res)
-         res.json(res)
+        //  console.log(res)
+         console.log(typeof(res))
+
+        //  res.json(res)
+        res.json({"hello": res})
      })
     
 })

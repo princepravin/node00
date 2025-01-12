@@ -11,9 +11,9 @@ const mysql2 = sql.createPool({
 })
 
 
-mysql2.query("Select * from employees",(err,res)=>{
-   if(err) console.log(err)
-    console.log(res)
-})
+// mysql2.query("Select * from employees",(err,res)=>{
+//    if(err) console.log(err)
+//     console.log(res)
+// })
 
 module.exports = mysql2
