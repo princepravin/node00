@@ -18,13 +18,13 @@ router.get('/api/userTable/:id', exampleMiddleware, (req,res)=>{
 router.get("/api/getEmployees",exampleMiddleware,(req,res)=> {
     console.log(req);
 
-    mysql2.query("Select * from employees",(err,res)=>{
+    mysql2.query("Select * from employees",(err,result)=>{
         if(err) console.log(err)
         //  console.log(res)
-         console.log(typeof(res))
+         console.log(typeof(result))
 
         //  res.json(res)
-        res.json({"hello": res})
+        res.json(result)
      })
     
 })
