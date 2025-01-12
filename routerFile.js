@@ -2,13 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mysql2 = require("./db")
 const exampleMiddleware = (req, res, next) => {
-    // console.log("req---->",req)
     next()
 }
-
-// const userController = require('../contoller/userTable');
-
-// router.post('/api/signup', exampleMiddleware, userController.signup);
 router.get('/api/userTable/:id', exampleMiddleware, (req,res)=>{
     
     console.log(req);
@@ -16,15 +11,16 @@ router.get('/api/userTable/:id', exampleMiddleware, (req,res)=>{
 });
 
 router.get("/api/getEmployees",exampleMiddleware,(req,res)=> {
-    console.log(req);
+    // console.log(req);
 
     mysql2.query("Select * from employees",(err,result)=>{
         if(err) console.log(err)
-        //  console.log(res)
-         console.log(typeof(result))
+        if (result.length === 0) {
+            console.log("No data found in employees table.");
+            return res.json({ employees: [] });
+        }
 
-        //  res.json(res)
-        res.json({"result":result})
+        res.json({ employees: result });
      })
     
 })
